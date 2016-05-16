@@ -1,0 +1,498 @@
+body {
+  color: #444;
+  background: #f4f4f4;
+}
+
+ol, ul, li {
+  list-style: none;
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+a:link, a:visited {
+    color: #3a8bbb;
+    outline: none;
+    text-decoration: none;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  min-height: 50px;
+  border-bottom: 1px solid #e5e5e5;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.menu {
+  border: 0;
+  margin: 0;
+  text-align: center;
+  padding: 0 30px;
+}
+
+.menu--item {
+  text-align: left;
+  display: inline-block;
+  margin: 0 20px 0 0;
+  font-size: 14px;
+}
+
+.menu--item > a {
+  line-height: 50px;
+  color: #999;
+}
+
+.menu--item__active > a{
+  font-weight: 600;
+  color: #444;
+}
+
+.profile {
+  position: absolute;
+  top: 11px;
+  right: 30px;
+  width: 32px;
+  height: 50px;
+}
+
+.profile img.photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  max-height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile:hover .profile--hover-card{
+  display: block;
+}
+
+.profile--hover-card:hover {
+  display: block;
+}
+
+.profile--hover-card {
+  background: rgba(255, 255, 255, 0.6);
+  right: -6px;
+  top: 36px;
+  display: none;
+  margin: 10px 0 0 -5px;
+  background: #fff;
+  padding: 0;
+  width: 160px;
+  position: absolute;
+  z-index: 9998;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+.profile--hover-card::after {
+  bottom: auto;
+  top: 0;
+  right: -5px;
+  transform: rotate(-225deg);
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  box-sizing: border-box;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent white white;
+  transform-origin: 0 0;
+  box-shadow: -3px 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+.profile-menu-list {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.profile--menu-item {
+  border-top: 1px solid #ddd;
+  padding: 10px 10px 10px 15px;
+  cursor: pointer;
+}
+
+.profile--menu-item:hover {
+  background: #3a8bbb;
+  border-top: 1px solid #3681AE;
+}
+
+.profile--menu-item:hover + .profile--menu-item {
+  border-top: 1px solid #3681AE;
+}
+
+.profile--menu-item:hover:first-child {
+  border-radius: 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.profile--menu-item:hover:last-child {
+  border-radius: 0;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.profile--menu-item:hover span {
+  color: #fff;
+}
+
+.profile--menu-item:first-child {
+  border-top: 0;
+}
+
+.profile--menu-item span{
+  color: #999;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+}
+
+.products {
+  max-width: 660px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.product-card {
+  position: relative;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.product-card--content {
+  margin-top: 10px;
+  min-height: 90px;
+  padding: 10px;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 500px) {
+  .product-card--content {
+    justify-content: center;
+  }
+
+  .product-card-text {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.product-card:hover {
+  background: #f9f9f9;
+}
+
+.product-card-img {
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.product-card-title {
+  margin: 10px 0 5px 10px;
+}
+
+.product-card-description {
+  margin-left: 10px;
+  font-size: 13px;
+}
+
+.modal {
+  display: none;
+}
+
+.modal-overlay {
+  background: rgba(30, 30, 30, 0.9);
+  top: 0;
+  left: 0;
+  z-index: 9997;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  webkit-overflow-scrolling: touch;
+}
+
+.modal-overlay__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  padding: 20px;
+  opacity: .5;
+  z-index: 9998;
+  background-repeat: no-repeat;
+  background-position: 20px 20px;
+  background-image: url(img/icon-shot-x-light.png);
+}
+
+.modal-overlay__close:hover {
+  opacity: .8;
+}
+
+.modal-overlay--content {
+  position: absolute;
+  z-index: 9997;
+  top: 20px;
+  left: 50%;
+  width: 920px;
+  margin-left: -460px;
+  margin-bottom: 20px;
+  padding: 40px 95px;
+  background: #f4f4f4;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+
+.modal-overlay--content--header {
+  position: relative;
+  margin: 0 0 15px 0;
+  padding-left: 60px;
+  min-height: 48px;
+}
+
+.modal-overlay--content--body--image {
+  width: 400px;
+  min-height: 300px;
+  margin: 0 0 30px 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+}
+
+.modal-overlay--content--body--image img {
+  display: block;
+  max-width: 400px;
+  max-height: 300px;
+  margin: 0 auto;
+}
+
+.modal-overlay--content--body--description {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.modal-overlay--content--header h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.modal-overlay--content--header h2 {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 14px;
+  font-weight: normal;
+  color: #999;
+  display: inline-block;
+}
+
+.modal-overlay--content--header img.photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  max-height: 48px;
+  border-radius: 50%;
+}
+
+.modal-overlay--meta {
+  width: 250px;
+  float: right;
+}
+
+.modal-overlay--meta--item {
+  display: block;
+  padding-top: 0;
+  padding-bottom: 10px;
+  line-height: 22px;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  line-height: 1;
+}
+
+.modal-overlay--meta--item img {
+  height: 20px;
+  vertical-align: middle;
+  opacity: .3;
+}
+
+.modal-overlay--meta--item span {
+  position: relative;
+  top: 2px;
+  margin-left: 5px;
+  line-height: 22px;
+  font-size: 13px;
+  color: #999;
+}
+
+.modal-overlay--meta--item h3 {
+  margin: 0;
+  padding: 20px 0 10px 0;
+  font-size: 15px;
+  line-height: 1;
+  color: #444;
+  border-top: 1px solid #ddd;
+}
+
+.modal-overlay--meta--topics {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.modal-overlay--meta--topic {
+  display: inline-block;
+  margin: 0 10px 0 0;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.modal__open {
+  display: block;
+}
+
+@media screen and (max-width: 960px) {
+  .modal-overlay {
+    overflow-y: auto;
+  }
+
+  .modal-overlay__close {
+    opacity: .34;
+    background-image: url(img/icon-shot-x-2x.png);
+    background-size: 20px 20px;
+    cursor: pointer;
+  }
+
+  .modal-overlay__close:hover {
+    opacity: .5;
+  }
+
+  .modal-overlay--content {
+    left: auto;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    padding: 20px;
+    border-radius: 0;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .modal-overlay--meta {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .modal-overlay--content--body--image {
+    max-width: 100%;
+    min-height: 100%;
+    padding: 0;
+  }
+
+  .modal-overlay--content--body--image img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+  }
+}
+
+.discussion {
+  max-width: 440px;
+}
+
+.discussion h2 {
+  margin: 0 0 20px 0;
+  padding: 20px 0 0 0;
+  border-bottom: none;
+  border-top: 1px solid #ddd;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.discussion--list {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.discussion--item {
+  position: relative;
+  width: auto;
+  margin: 0 0 20px 0;
+  padding: 0;
+  font-size: 15px;
+  color: #555;
+  border-bottom: 1px solid #ddd;
+  min-height: 48px;
+  padding-left: 44px;
+}
+
+.discussion--item h2 {
+  border: 0;
+  outline: 0;
+  margin: 0 0 2px 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #444;
+}
+
+.discussion--item--photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  max-height: 32px;
+  border-radius: 50%;
+}
+
+.discussion--item--comment {
+  width: 388px;
+  margin: 0 0 0 42px;
+  overflow: hidden;
+}
+
+.discussion--item--comment p {
+  margin: 0 0 10px 0;
+  padding: 0;
+  border: 0;
+}
+
+.loading {
+  display: none;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.show {
+  display: block;
+}
