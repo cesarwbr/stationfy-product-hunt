@@ -55,7 +55,7 @@ express()
     .get('/', function (req, res) {
       res.sendFile(path.join(__dirname, '../public/index.html'))
     })
-    // listen on port 3000
+    // listen on port 8080
     .listen(8080, () => {
       console.log('Load http://localhost:8080/.')
     })
